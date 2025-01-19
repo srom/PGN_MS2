@@ -962,11 +962,14 @@ e.g. β-Asp, Ala>Ala, Ser>Ala>Thr>Ala
         AAs = self.gen_retrieve_AAs(idx=[4, 5])
         if self.generator.modifications["Alanine/Lactate Substitution"]:
             AAs.append("Lac")  # add Lactate if modification used
-        AA_lst = easygui.multchoicebox(
-            self.history+msg,
-            self.title,
-            choices=AAs,
-            preselect=preselect)
+        if len(AAs) == 1:
+            AA_lst = AAs
+        else:
+            AA_lst = easygui.multchoicebox(
+                self.history+msg,
+                self.title,
+                choices=AAs,
+                preselect=preselect)
         if AA_lst is None:
             self.history = f"{name} polymerisation not added - no AAs provided."
             return preselect
@@ -1032,11 +1035,14 @@ e.g. β-Asp, Ala>Ala, Ser>Ala>Thr>Ala
         AAs = self.gen_retrieve_AAs(idx=[4, 5])
         if self.generator.modifications["Alanine/Lactate Substitution"]:
             AAs.append("Lac")  # add Lactate if modification used
-        AA_lst = easygui.multchoicebox(
-            self.history+msg,
-            self.title,
-            choices=AAs,
-            preselect=preselect)
+        if len(AAs) == 1:
+            AA_lst = AAs
+        else:
+            AA_lst = easygui.multchoicebox(
+                self.history+msg,
+                self.title,
+                choices=AAs,
+                preselect=preselect)
         if AA_lst is None:
             self.history = f"{name} polymerisation not added - no AAs provided."
             return preselect
